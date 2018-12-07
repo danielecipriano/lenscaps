@@ -9,15 +9,40 @@
 
 <html>
 <head>
+
+<button onclick="myFunction()">Try it</button>
+
+<div id="myDIV">
+
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+  <button onclick="myFunction(1)">Click Me</button>
+
+  <div id="myDIV">
+
+<div class="relative">
 <title>test</title>
+
   <div class="relative">
 <link rel="stylesheet' type='text/css' href='https://libs.paramate.trinckle.com/paramateViewport-latest.css">
 <script src="https://libs.paramate.trinckle.com/paramateConfigurator-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateControlsAuto-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateViewportWebGL-latest.js"></script>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
+</div>
 </head>
 <body>
+  <div id="myDIV">
 <div id="viewPort" style="width: 200px; height: 200px;"></div>
 <div id="controls"></div>
 <script>
@@ -51,22 +76,14 @@ window.onload = function(){
   configurator.controls = controls;
 
   // Start configurator
-  configurator.initialize();
-}
+  configurator.initialize();}
+
 </script>
 </body>
 </html>
 
-<head>
-  <style>
-  <div id="button"><a href="login.html">Log In</a></div>
-  </style>
-  </head>
 
-  <style>
-  #button
 
-  </style>
 
 <head>
   <div class="textarea">
