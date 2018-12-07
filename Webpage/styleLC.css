@@ -42,23 +42,3 @@ rende_1.gif {
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;}
-
-
-  #button {
-      width: 6em;
-      border: 2px solid green;
-      background: blue;
-      border-radius: 5px;
-  }
-  a {
-      display: block;
-      width: 100%;
-      line-height: 2em;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-  }
-  a:hover {
-      color: red;
-      background: #eff;
-  }
