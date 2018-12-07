@@ -1,0 +1,6 @@
+h3 {
+  background: inherit;
+  background-clip: text;
+  color: transparent;
+  filter: invert(1);
+}
