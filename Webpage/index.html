@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>test</title>
+<title>ALPA Lens Caps</title>
 <link rel="stylesheet' type='text/css' href='https://libs.paramate.trinckle.com/paramateViewport-latest.css">
 <script src="https://libs.paramate.trinckle.com/paramateConfigurator-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateControls-latest.js"></script>
@@ -17,7 +17,7 @@ window.onload = function(){
   // Create configurator object
   configurator = new Paramate.Configurator({
     APIHub: 'https://api.paramate.trinckle.com',
-    configuratorId: '55eec4af-82cd-4102-982c-b1bd4ae0f8b0',
+       configuratorId: '55eec4af-82cd-4102-982c-b1bd4ae0f8b0',
     APIKey: 'a41cf56a0291d67722469adc5fda436a'
   });
 
@@ -42,35 +42,38 @@ window.onload = function(){
   // Start configurator
   configurator.initialize();
 }
-    var slideIndex = 1;
-  showSlides(slideIndex);
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
+  function showhide(id) {
+    var e = document.getElementById(id);
+    e.style.display = (e.style.display == 'block') ? 'none' : 'block';
   }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-
-    }
 
     var number = configurator.getParamValue("main:innerDiam");
+
+    function qr(diameter) {
+      const url = 'http://chart.apis.google.com/chart?chs=225x225&cht=qr&chld=L&chl=Diameter+=+' + diameter
+      var oReq = new XMLHttpRequest();
+      oReq.open("GET", url, true);
+      oReq.responseType = "blob";
+
+      oReq.onload = function (oEvent) {
+        var blob = oReq.response; // Note: not oReq.responseText
+        if (blob) {
+
+           var f = new File([blob], 'image.png', {type: "image/png"})
+
+           configurator.uploadFile({file: f, fileId: 'qr_code', success: function(res)
+           {
+           configurator.setParamValue('main:userqr', 'qr_code');
+           }});
+
+      }
+    };
+
+    oReq.send(null);
+    document.getElementById('result3').src = "http://chart.apis.google.com/chart?chs=225x225&cht=qr&chld=L&chl=Diameter+=+" + diameter;
+  }
+
 
 </script>
 
@@ -134,7 +137,7 @@ window.onload = function(){
   <!-- Title image-->
   <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
     <div class="w3-display-middle" style="white-space:nowrap;">
-      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Customizable <span class="w3-hide-small">lens </span> caps</span>
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">ALPA customizable <span class="w3-hide-small">lens </span> caps</span>
     </div>
   </div>
 
@@ -184,7 +187,7 @@ window.onload = function(){
         <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 60); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 55); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div><div class="w3-col m3">
         <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 100); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
@@ -218,7 +221,7 @@ window.onload = function(){
     <div style='display: inline-block; vertical-align: left;'>
       COLORS
       <br>
-      <div style="margin-bottom: 20px; margin-top: 10px; text-align: left">
+      <div style="margin-bottom: 20px; margin-top: 10px; text-align: center">
         <div class="foo green" onclick="configurator.setParamValue('main:mycolor', 'rgb(0,153,0)')"></div>
         <div class="foo orange" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 165, 0)')"></div>
         <div class="foo red" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 0, 0)')"></div>
@@ -227,22 +230,36 @@ window.onload = function(){
       <br>
       ADDONS
       <br>
-      Strap clip
-      <input type="checkbox" class="paramateParam" data-paramate-paramName="main:clip" >
+      <input type="checkbox" class="paramateParam" data-paramate-paramName="main:clip" > Strap clip
+      <br>
+      <input type="checkbox" class="paramateParam" data-paramate-paramName="main:qr" onchange="qr(configurator.getParamValue('main:innerDiam')); showhide('qrbox')" > QR
+      <br>
+      <input type="checkbox" class="paramateParam" data-paramate-paramName="main:logo" onchange="showhide('logobox')"> Logo
       <br>
       <br>
       VOLUME (cm3): <div id="result"> </div><br>
       PRICE (Euro): <div id="result2"> </div><br>
+      <div id="logobox" style="display: none;">
+        LOGO
+        <br>
+        <input type="file" class="paramateParam" data-paramate-paramName="main:userimg"> <br>
+        <input type="checkbox" class="paramateParam" data-paramate-paramName="main:o" > Invert logo
+      </div>
+      <br>
+      <br>
+      <div id="qrbox" style="display: none;">
+        QR TAG
+        <br>
+        <img src="" id="result3" style="width:100px">
+      </div>
+      <br>
+      <br>
+      <!--<button class="w3-button w3-dark-grey w3-right w3-section" type="submit" onclick="qr(configurator.getParamValue('main:innerDiam'))">Generate cue</button> -->
     </div>
 </div>
 
-<script type="text/javascript">
-    //var number = configurator.getParamValue('main:innerDiam');
-  </script>
-
 
 <!--Banner-->
-
 <div class="w3-row w3-center w3-dark-grey w3-padding-16" >
   <div class=" w3-section">
     <span class="w3-xlarge">Order Information</span>
@@ -251,7 +268,7 @@ window.onload = function(){
 
 <!-- Form -->
 <br>
-<div id='wrapper' style='text-align: center; margin_top = 10px'>
+<div class="center">
   <div class="w3-row-padding ">
 
     <form action="/action_page.php" target="_blank">
