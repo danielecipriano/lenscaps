@@ -1,0 +1,58 @@
+open float d
+{
+  name = "Diameter" 
+  descr = "Lens diameter" 
+  value = 95.4 
+}
+
+solid a=cylinder (<[0,0,14]>,<[0,d/2+2.5,0]>)
+a=translation(<[0,0,-2]>)>> a
+solid b=cylinder (<[0,0,14]>,<[0,d/2,0]>)
+curve rect=<[(d/2+1)*cos(rad(65)),(d/2+1)*sin(rad(65))]>->arc(<[0,0]>,rad(25))-><[-(d/2+1)*cos(rad(65)),-(d/2+1)*sin(rad(65))]>->arc(<[0,0]>,rad(25))-><-
+curve rect2=rotation(<[0,0,1]>,PI/2)>>rect
+solid cut=extrusion(rect,<[0,0,12]>)
+solid cut2=extrusion(rect2,<[0,0,12]>)
+echo (rect)
+solid cap=a-b-cut-cut2
+cap=rotation(<[1,0,0]>,PI/2)>>cap
+
+
+curve c = <[0,0]> -> <[0.3,0]>-><[2.63,8.7]>-><[1.66,8.96]>-><[1.4,8]>-><[1.69,7.923]>-><[0,1.7]>-><-
+curve g= <[-(d/2+1.5)*cos(10*PI/180),0,-(d/2+1.5)*sin(10*PI/180)]> -> arc_to( <[-(d/2+1.5)*cos(10*PI/180),0,(d/2+1.5)*sin(10*PI/180)]>,(d/2+1.5),1,1,<[0,1,0]>) 
+
+solid spring=extrusion(c,g)
+
+spring=translation(<[0,-12,0]>)>> spring
+spring=rotation(<[0,1,0]>,rad(12.5))>> spring
+cap+=spring
+solid springvect[]=[rotation(<[0,1,0]>,rad(90))>> spring,
+                    rotation(<[0,1,0]>, rad(180))>> spring,
+                    rotation(<[0,1,0]>,rad(270))>> spring]
+                    
+
+echo(springvect)
+for( int i = 0; i < springvect.length(); i++ )
+  {cap+=springvect[i]}
+  
+
+file stlclip = "clip.stl"
+mesh Meshclip( stlclip )
+solid Solidclip = Meshclip
+
+
+Solidclip =rotation(<[0,0,1]>,PI)>> Solidclip
+
+Solidclip=scaling( d/95.4,d/95.4, d/95.4 )>>Solidclip
+Solidclip =translation(<[0,2.6-d/95.4,0]>)>> Solidclip
+solid ccap=Solidclip+cap
+
+open color mycolor
+{
+  name="Color"
+  descr="Color of lens cap"
+  value=rgb(0,0,0)
+}
+
+ccap <<= mycolor
+
+make ccap
