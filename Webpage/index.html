@@ -4,7 +4,7 @@
 <title>test</title>
 <link rel="stylesheet' type='text/css' href='https://libs.paramate.trinckle.com/paramateViewport-latest.css">
 <script src="https://libs.paramate.trinckle.com/paramateConfigurator-latest.js"></script>
-<script src="https://libs.paramate.trinckle.com/paramateControlsAuto-latest.js"></script>
+<script src="https://libs.paramate.trinckle.com/paramateControls-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateViewportWebGL-latest.js"></script>
 
 <script>
@@ -30,7 +30,7 @@ window.onload = function(){
   });
 
   // Create controls object
-  controls = new Paramate.ControlsAuto({
+  controls = new Paramate.Controls({
     configurator: configurator,
     containerElement: document.getElementById('controls')
   });
@@ -71,6 +71,7 @@ window.onload = function(){
     }
 
     var number = configurator.getParamValue("main:innerDiam");
+
 </script>
 
 
@@ -180,27 +181,28 @@ window.onload = function(){
   <!-- Picture grid -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 80); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 90); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 60); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div><div class="w3-col m3">
-        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 95); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 100); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 120); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 200); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
     </div>
 <br>
 <br>
 
-<button class="button" style="display: block; margin: 0 auto;"><span>.. or just configure your own one!</span></button>
+<a href="#config" onclick="toggleFunction()"><button class="button" style="display: block; margin: 0 auto;"><span>.. or just configure your own one!</span></button></a>
 
 
 <br>
 <br>
+
 <!--Banner-->
-<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+<div class="w3-row w3-center w3-dark-grey w3-padding-16" id="config">
   <div class=" w3-section">
     <span class="w3-xlarge">Configurator</span>
   </div>
@@ -213,8 +215,24 @@ window.onload = function(){
     <div style='display: inline-block; vertical-align: top;'>
         <div id="viewPort" style="width: 700px; height: 500px;"></div>
     </div>
-    <div style='display: inline-block; vertical-align: middle;'>
-      <div id="controls"></div>
+    <div style='display: inline-block; vertical-align: left;'>
+      COLORS
+      <br>
+      <div style="margin-bottom: 20px; margin-top: 10px; text-align: left">
+        <div class="foo green" onclick="configurator.setParamValue('main:mycolor', 'rgb(0,153,0)')"></div>
+        <div class="foo orange" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 165, 0)')"></div>
+        <div class="foo red" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 0, 0)')"></div>
+      </div>
+      <br>
+      <br>
+      ADDONS
+      <br>
+      Strap clip
+      <input type="checkbox" class="paramateParam" data-paramate-paramName="main:clip" >
+      <br>
+      <br>
+      VOLUME (cm3): <div id="result"> </div><br>
+      PRICE (Euro): <div id="result2"> </div><br>
     </div>
 </div>
 
@@ -222,11 +240,6 @@ window.onload = function(){
     //var number = configurator.getParamValue('main:innerDiam');
   </script>
 
-<div class="w3-content w3-container w3-padding-16" id="about">
-  <h3 class="w3-center">Volume (cm3): <div id="result"> </div> </h3>
-  <h3 class="w3-center">Price (Euro): <div id="result2"> </div> </h3>
-
-</div>
 
 <!--Banner-->
 
@@ -239,7 +252,7 @@ window.onload = function(){
 <!-- Form -->
 <br>
 <div id='wrapper' style='text-align: center; margin_top = 10px'>
-  <div class="w3-row-padding w3-center">
+  <div class="w3-row-padding ">
 
     <form action="/action_page.php" target="_blank">
             <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
@@ -271,7 +284,7 @@ window.onload = function(){
       <i class="fa fa-twitter w3-hover-opacity"></i>
       <i class="fa fa-linkedin w3-hover-opacity"></i>
     </div>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    <p>Powered by <a href="https://www.alpa.ch" title="ALPA" target="_blank" class="w3-hover-text-green">ALPA</a></p>
   </footer>
 
 </body>

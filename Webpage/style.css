@@ -376,3 +376,31 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.center-div
+{
+     margin: 0 auto;
+     width: 100px;
+}
+
+.foo {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+
+.green {
+  background: rgb(0,153,0);
+}
+
+.orange {
+  background: rgb(255, 165, 0);
+}
+
+.red {
+  background: rgb(255, 0, 0);
+}
+<di
