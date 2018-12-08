@@ -6,6 +6,72 @@
 <script src="https://libs.paramate.trinckle.com/paramateConfigurator-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateControlsAuto-latest.js"></script>
 <script src="https://libs.paramate.trinckle.com/paramateViewportWebGL-latest.js"></script>
+
+<script>
+var configurator
+var viewPort
+var controls
+
+window.onload = function(){
+
+  // Create configurator object
+  configurator = new Paramate.Configurator({
+    APIHub: 'https://api.paramate.trinckle.com',
+    configuratorId: 'f0b02900-43fc-40f3-8279-3116fbc7ea95',
+  APIKey: 'd640c01f5e21e4f4e7d81ae258d55391'
+  });
+
+  // Create controls object
+  viewPort = new Paramate.ViewportWebGL({
+    configurator: configurator,
+    viewportElement: document.getElementById('viewPort')
+  });
+
+  // Create controls object
+  controls = new Paramate.ControlsAuto({
+    configurator: configurator,
+    containerElement: document.getElementById('controls')
+  });
+
+  // Register viewport and controls
+  configurator.viewPort = viewPort;
+  configurator.controls = controls;
+
+  // Start configurator
+  configurator.initialize();
+}
+    var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+
+    }
+
+    var number = configurator.getParamValue("main:innerDiam");
+</script>
+
+
 </head>
 
 <meta charset="UTF-8">
@@ -112,15 +178,15 @@
   <!-- Picture grid -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:nrings', 1)" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 80); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:nrings', 2)" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 90); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div><div class="w3-col m3">
-        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:nrings', 3)" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 95); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:nrings', 4)" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 120); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
     </div>
 <br>
@@ -139,7 +205,9 @@
 </div>
 
 <!--Configurator-->
-<div id='wrapper' style='text-align: center;'>
+<br>
+
+<div id='wrapper' style='text-align: center; margin_top = 10px'>
     <div style='display: inline-block; vertical-align: top;'>
         <div id="viewPort" style="width: 700px; height: 500px;"></div>
     </div>
@@ -148,68 +216,48 @@
     </div>
 </div>
 
-
-
-  <script>
-  var configurator
-  var viewPort
-  var controls
-
-  window.onload = function(){
-
-    // Create configurator object
-    configurator = new Paramate.Configurator({
-      APIHub: 'https://api.paramate.trinckle.com',
-      configuratorId: '7e61e7b5-11c0-41f1-a3cd-1f94b3231f88',
-      APIKey: '16678c50f26b94196a16ab90e06e57b7'
-    });
-
-    // Create controls object
-    viewPort = new Paramate.ViewportWebGL({
-      configurator: configurator,
-      viewportElement: document.getElementById('viewPort')
-    });
-
-    // Create controls object
-    controls = new Paramate.ControlsAuto({
-      configurator: configurator,
-      containerElement: document.getElementById('controls')
-    });
-
-    // Register viewport and controls
-    configurator.viewPort = viewPort;
-    configurator.controls = controls;
-
-    // Start configurator
-    configurator.initialize();
-  }
-      var slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-    }
+<script type="text/javascript">
+    //var number = configurator.getParamValue('main:innerDiam');
   </script>
+
+<div class="w3-content w3-container w3-padding-16" id="about">
+  <h3 class="w3-center">Selected diameter: <div id="result"> </div>
+  </h3>
+
+
+</div>
+
+<!--Banner-->
+
+<div class="w3-row w3-center w3-dark-grey w3-padding-16" >
+  <div class=" w3-section">
+    <span class="w3-xlarge">Order Information</span>
+  </div>
+</div>
+
+<!-- Form -->
+<br>
+<div id='wrapper' style='text-align: center; margin_top = 10px'>
+  <div class="w3-row-padding w3-center">
+
+    <form action="/action_page.php" target="_blank">
+            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+              <div class="w3-quarter">
+                <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+              </div>
+              <div class="w3-quarter" style="margin:0 +16px 8px 8px">
+                <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+              </div>
+            </div>
+            <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Address" required name="Message">
+            <button class="w3-button w3-black w3-right w3-section" type="submit">
+              <i class="fa fa-paper-plane"></i> ORDER
+            </button>
+          </div>
+    </form>
+  </div>
+</div>
 
   <!-- Footer -->
   <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
