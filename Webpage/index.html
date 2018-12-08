@@ -17,14 +17,16 @@ window.onload = function(){
   // Create configurator object
   configurator = new Paramate.Configurator({
     APIHub: 'https://api.paramate.trinckle.com',
-    configuratorId: 'f0b02900-43fc-40f3-8279-3116fbc7ea95',
-  APIKey: 'd640c01f5e21e4f4e7d81ae258d55391'
+    configuratorId: '55eec4af-82cd-4102-982c-b1bd4ae0f8b0',
+    APIKey: 'a41cf56a0291d67722469adc5fda436a'
   });
 
   // Create controls object
   viewPort = new Paramate.ViewportWebGL({
     configurator: configurator,
-    viewportElement: document.getElementById('viewPort')
+    viewportElement: document.getElementById('viewPort'),
+    cameraZoom: false,
+    cameraDolly: false
   });
 
   // Create controls object
@@ -178,15 +180,15 @@ window.onload = function(){
   <!-- Picture grid -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 80); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 80); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 90); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 90); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div><div class="w3-col m3">
-        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 95); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 95); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 120); number = configurator.getParamValue('main:innerDiam'); document.getElementById('result').innerHTML= number;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 120); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 1.5;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
     </div>
 <br>
@@ -221,9 +223,8 @@ window.onload = function(){
   </script>
 
 <div class="w3-content w3-container w3-padding-16" id="about">
-  <h3 class="w3-center">Selected diameter: <div id="result"> </div>
-  </h3>
-
+  <h3 class="w3-center">Volume (cm3): <div id="result"> </div> </h3>
+  <h3 class="w3-center">Price (Euro): <div id="result2"> </div> </h3>
 
 </div>
 
