@@ -226,6 +226,7 @@ window.onload = function(){
       COLORS
       <br>
       <div style="margin-bottom: 20px; margin-top: 10px; text-align: center">
+        <div class="foo blue" onclick="configurator.setParamValue('main:mycolor', 'rgb(30,144,255)')"></div>
         <div class="foo green" onclick="configurator.setParamValue('main:mycolor', 'rgb(0,153,0)')"></div>
         <div class="foo orange" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 165, 0)')"></div>
         <div class="foo red" onclick="configurator.setParamValue('main:mycolor', 'rgb(255, 0, 0)')"></div>
@@ -254,6 +255,21 @@ window.onload = function(){
         <br>
         <input type="file" class="paramateParam" data-paramate-paramName="main:userimg"> <br>
         <input type="checkbox" class="paramateParam" data-paramate-paramName="main:o" > Invert logo
+
+        <div class="slidecontainer">
+              <input type="range" min="0.5" max="2" value="1" step="0.1" class="slider" id="heightRange">
+              <p> Scale logo: <span id="height"></span></p>
+        </div>
+            <script>
+                var slider1 = document.getElementById("heightRange");
+                var output1 = document.getElementById("height");
+                output1.innerHTML = slider1.value;
+                slider1.oninput = function() {
+                    configurator.setParamValue('main:logoscale', this.value)
+                    output1.innerHTML = this.value;
+                }
+            </script>
+
       </div>
       <br>
       <br>

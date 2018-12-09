@@ -403,6 +403,9 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .red {
   background: rgb(255, 0, 0);
 }
+.blue {
+  background: rgb(30,144,255);
+}
 .center {
   margin: auto;
 }
