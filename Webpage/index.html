@@ -79,10 +79,6 @@ window.onload = function(){
   }
 
 
-    }
-
-    var number = configurator.getParamValue("main:innerDiam");
-
 </script>
 
 
@@ -192,21 +188,21 @@ window.onload = function(){
   <!-- Picture grid -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="hide();configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="hide('diabox'); configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 55); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/2.jpg" style="width:60%" onclick="hide('diabox'); configurator.setParamValue('main:innerDiam', 55); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div><div class="w3-col m3">
-        <img src="img/lens/3.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 100); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/3.jpg" style="width:60%" onclick="hide('diabox'); configurator.setParamValue('main:innerDiam', 100); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 200); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="hide('diabox'); configurator.setParamValue('main:innerDiam', 200); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
     </div>
 <br>
 <br>
 
-<a href="#config" onclick="toggleFunction()"><button class="button" style="display: block; margin: 0 auto;"><span>.. or just configure your own one!</span></button></a>
+<a href="#config" onclick="showhide('diabox'); toggleFunction()"><button class="button" style="display: block; margin: 0 auto;"><span>.. or just configure your own one!</span></button></a>
 
 
 <br>
