@@ -188,7 +188,7 @@ window.onload = function(){
   <!-- Picture grid -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-        <img src="img/lens/1.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
+        <img src="img/lens/1.jpg" style="width:60%" onclick="hide();configurator.setParamValue('main:innerDiam', 40); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
       </div>
       <div class="w3-col m3">
         <img src="img/lens/2.jpg" style="width:60%" onclick="configurator.setParamValue('main:innerDiam', 55); number = Math.round(Math.PI * Math.pow(configurator.getParamValue('main:innerDiam'),2) * 0.0015) ; document.getElementById('result').innerHTML= number; document.getElementById('result2').innerHTML= number * 0.8;" class="w3-hover-opacity" alt="The mist over the mountains">
@@ -232,6 +232,12 @@ window.onload = function(){
       </div>
       <br>
       <br>
+      <div id="diabox" style="display: none;">
+        CUSTOM DIAMETER <br>
+        <input type="text" class="paramateParam" data-paramate-paramName="main:innerDiam">
+        <br>
+        <br>
+      </div>
       ADDONS
       <br>
       <input type="checkbox" class="paramateParam" data-paramate-paramName="main:clip" > Strap clip
